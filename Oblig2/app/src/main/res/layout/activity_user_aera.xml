@@ -16,48 +16,14 @@
         android:text="TextView"
         tools:layout_editor_absoluteX="119dp"
         tools:layout_editor_absoluteY="26dp" />
+    <!--Hovedvindu-->
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/tvVelkom"
-        android:layout_below="@+id/tvVelkom"
-        android:layout_marginTop="24dp"
-        android:text="Brukernavn" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--sliding menu vindu-->
 
-    <EditText
-        android:id="@+id/etUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView3"
-        android:layout_marginTop="36dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/etUsername"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="29dp"
-        android:text="Alder
-" />
-
-    <EditText
-        android:id="@+id/etAge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/etUsername"
-        android:layout_below="@+id/textView4"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
+    </FrameLayout>
 
 </RelativeLayout>
 
