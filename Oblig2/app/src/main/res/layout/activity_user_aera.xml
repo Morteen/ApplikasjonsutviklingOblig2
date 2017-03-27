@@ -18,12 +18,7 @@
         tools:layout_editor_absoluteY="26dp" />
     <!--Hovedvindu-->
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <!--sliding menu vindu-->
 
-    </FrameLayout>
 
 </RelativeLayout>
 

@@ -47,6 +47,8 @@ public class LoginActivity extends AppCompatActivity {
                 String user_pass= ePassword.getText().toString();
 
                 new LoginActivity.JSONAsynkTask().execute(user_name,user_pass);
+                eUserName.setText("");
+                 ePassword.setText("");
 
             }
         });
@@ -99,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
         protected Boolean doInBackground(String... params) {
 
 
-
+            // HttpURLConnection connection= null;
             BufferedReader reader = null;
             String line = "";
             String result = "";
@@ -108,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
 
             HttpURLConnection connection = null;
             try {
-                URL actorUrl = new URL("http://itfag.usn.no/~210144/api.php/Bruker?filter=Passord,eg,"+params[1]+"&filter=username,eq,"+params[0]+"&transform=1");
+                URL actorUrl = new URL("http://itfag.usn.no/~210144/api.php/Bruker?filter=Passord,eq,"+params[1]+"&filter=username,eq,"+params[0]+"&transform=1");
 
                 connection = (HttpURLConnection) actorUrl.openConnection();
                 connection.connect();
@@ -146,7 +148,7 @@ public class LoginActivity extends AppCompatActivity {
 
             } finally {
 
-                if (reader != null) {
+                if( reader!=null){
                     try {
                         reader.close();
                     } catch (IOException e) {
@@ -174,8 +176,9 @@ public class LoginActivity extends AppCompatActivity {
                       User user = userList.get(0);
                       Toast.makeText(getApplicationContext(), user.fornavn, Toast.LENGTH_SHORT).show();
 
-                    Intent userAeraIntent = new Intent(LoginActivity.this,UserAeraActivity.class);//RegisterActivity
-                    LoginActivity.this.startActivity(userAeraIntent);
+                    Intent minSideIntent = new Intent(LoginActivity.this,MinSideActivity.class);//MinsideActivity
+                    LoginActivity.this.startActivity(minSideIntent);
+                      finish();
 
             }else if(userList.size()==0||userList==null){
                     Toast.makeText(LoginActivity.this,"Ser ikke ut som du er registrert",Toast.LENGTH_SHORT).show();
@@ -187,8 +190,10 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-            } else if (!result) {
+            } else  {
                 Toast.makeText(getApplicationContext(), "Får ikke hentet data fra server", Toast.LENGTH_SHORT).show();
+
+                progressDialog.cancel();
 
             }
 

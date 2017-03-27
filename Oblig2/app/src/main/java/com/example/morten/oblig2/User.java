@@ -57,7 +57,7 @@ public class User {
     public User() {
     }
 
-    // Konstruktør som bygger Vare-objekt basert på et JSONObject-objekt
+    // Konstruktør som bygger userobjekt basert på et JSONObject-objekt
     public User(JSONObject jsonUser) {
         this.fornavn= jsonUser.optString(KOL_NAVN_Fornavn );
         this.etternavn = jsonUser.optString(KOL_NAVN_Etternavn);

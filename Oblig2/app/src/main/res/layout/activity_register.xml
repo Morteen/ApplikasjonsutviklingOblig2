@@ -4,20 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/balletwalpaper"
+    android:padding="15dp"
     tools:context="com.example.morten.oblig2.RegisterActivity">
 
     <EditText
         android:id="@+id/eFName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:hint="Fornavn"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="-58dp" />
+
     <EditText
         android:id="@+id/eLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/eFName"
+        android:layout_marginTop="20dp"
         android:hint="Etternavn"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="-58dp" />
@@ -26,9 +31,10 @@
         android:id="@+id/eUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Brukernavn"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/eLastName"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="20dp"
+        android:hint="Brukernavn" />
 
     <EditText
         android:id="@+id/ePassword"
@@ -36,20 +42,21 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/eUsername"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
+
         android:hint="Passord"
         android:inputType="textPassword" />
+
     <EditText
         android:id="@+id/editEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ePassword"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Email"
-        />
+        android:hint="Email" />
 
     <EditText
         android:id="@+id/eAge"
@@ -57,6 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editEmail"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Alder"
         android:inputType="number" />
@@ -65,7 +73,6 @@
         android:id="@+id/bRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_alignParentStart="true"
         android:layout_below="@+id/eAge"
         android:layout_marginTop="33dp"

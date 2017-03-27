@@ -35,12 +35,12 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
     protected void onPreExecute() {
 
 
-        /*progressDialog = new ProgressDialog(context);
+        progressDialog = new ProgressDialog(this.context);
         progressDialog.setMessage("Vent litt nå da..");
         progressDialog.setTitle("Kobler opp...");
         progressDialog.show();
         progressDialog.setProgressStyle(3);
-        progressDialog.setCancelable(false);*/
+        progressDialog.setCancelable(false);
 
         super.onPreExecute();
     }
@@ -104,8 +104,8 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        //progressDialog.cancel();
-        //Toast.makeText(context,result,Toast.LENGTH_SHORT).show();
+        progressDialog.cancel();
+        Toast.makeText(this.context,result,Toast.LENGTH_SHORT).show();
     }
 
 

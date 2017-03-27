@@ -35,7 +35,7 @@ public class UserAeraActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_aera);
 
         final EditText etUserName = (EditText) findViewById(R.id.etUsername);
-        final EditText etAge = (EditText) findViewById(R.id.etAge);
+        //final EditText etAge = (EditText) findViewById(R.id.etAge);
         final TextView velkom = (TextView) findViewById(R.id.tvVelkom);
 
            //Henter User objektet fra Login

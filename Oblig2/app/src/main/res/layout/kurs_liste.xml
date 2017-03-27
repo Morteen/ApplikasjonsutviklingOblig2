@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!--Kurs-->
+    <TextView
+
+        android:id="@+id/KursViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/KursViewDag"
+        android:layout_alignBottom="@+id/KursViewDag"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="left"
+        android:layout_marginLeft="15dp"
+
+        android:layout_marginStart="23dp"
+        android:paddingEnd="5dp"
+        android:text="Kursnavn"
+        android:textAppearance="@style/TextAppearance.AppCompat.Notification.Title" />
+    <!--Dag-->
+    <TextView
+        android:id="@+id/KursViewDag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="33dp"
+        android:paddingRight="10dp"
+
+        android:paddingStart="5dp"
+        android:text="Dag"
+        android:textAppearance="@style/TextAppearance.AppCompat.Notification.Title" />
+
+    <!--Lærer-->
+    <TextView
+        android:id="@+id/KursViewKursholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/KursViewDag"
+        android:layout_alignBottom="@+id/KursViewDag"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="right"
+        android:layout_marginEnd="32dp"
+        android:layout_marginLeft="25dp"
+
+
+        android:layout_marginRight="15dp"
+        android:paddingEnd="5dp"
+        android:text="Lærer"
+        android:textAppearance="@style/TextAppearance.AppCompat.Notification.Title" />
+
+
+
+
+
+
+
+</RelativeLayout>
