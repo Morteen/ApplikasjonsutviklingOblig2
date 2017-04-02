@@ -27,6 +27,7 @@ import java.util.List;
 public class LoginActivity extends AppCompatActivity {
     String userData;
      static ArrayList<User> userList;
+    static User loginuser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -173,8 +174,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
                   if(userList.size()>0){
-                      User user = userList.get(0);
-                      Toast.makeText(getApplicationContext(), user.fornavn, Toast.LENGTH_SHORT).show();
+                      loginuser = userList.get(0);
+                      Toast.makeText(getApplicationContext(), loginuser.fornavn, Toast.LENGTH_SHORT).show();
 
                     Intent minSideIntent = new Intent(LoginActivity.this,MinSideActivity.class);//MinsideActivity
                     LoginActivity.this.startActivity(minSideIntent);

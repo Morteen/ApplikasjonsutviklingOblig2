@@ -23,9 +23,10 @@ import java.net.URLEncoder;
 public class BackgroundTask extends AsyncTask<String, Void, String> {
 
 
-    Context context;
+    Context context ;
 
     public BackgroundTask(Context context) {
+
 
     }
 
@@ -35,14 +36,14 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
     protected void onPreExecute() {
 
 
-        progressDialog = new ProgressDialog(this.context);
+      /*  progressDialog = new ProgressDialog();
         progressDialog.setMessage("Vent litt nå da..");
         progressDialog.setTitle("Kobler opp...");
         progressDialog.show();
         progressDialog.setProgressStyle(3);
         progressDialog.setCancelable(false);
 
-        super.onPreExecute();
+        super.onPreExecute();*/
     }
 
     @Override
@@ -104,7 +105,7 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        progressDialog.cancel();
+       // progressDialog.cancel();
         Toast.makeText(this.context,result,Toast.LENGTH_SHORT).show();
     }
 

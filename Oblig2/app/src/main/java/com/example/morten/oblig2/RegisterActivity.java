@@ -59,8 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
                 //user.alder = Integer.parseInt(etAge.getText().toString());
 
                 String method="register";
-                BackgroundTask backgroundTask= new BackgroundTask(RegisterActivity.this);
-                //Nr,Epost,Passord,username,Fornavn,Etternavn,Alder
+                BackgroundTask backgroundTask= new BackgroundTask(getBaseContext());
                 backgroundTask.execute(method,user.email,user.passord,user.username,user.fornavn,user.etternavn,"50");
 
 finish();

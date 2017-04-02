@@ -31,7 +31,7 @@ TextView fname,ename,username,email,passw,alder;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_profil, container, false);
-        User user=LoginActivity.userList.get(0);
+        User user=LoginActivity.loginuser;
         //MinSideActivity min =MinSideActivity.getApplicationActivity();
         fname=(TextView)view.findViewById(R.id.fname);
         ename=(TextView)view.findViewById(R.id.ename);
@@ -43,6 +43,9 @@ TextView fname,ename,username,email,passw,alder;
         fname.setText(user.fornavn);
         ename.setText(user.etternavn);
         username.setText(user.username);
+        passw.setText((user.passord));
+        email.setText(user.email);
+        alder.setText(user.alder);
 
         return view;
     }
