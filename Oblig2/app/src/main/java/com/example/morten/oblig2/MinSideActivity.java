@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.icu.util.Calendar;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -33,13 +34,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 public class MinSideActivity extends AppCompatActivity
@@ -48,6 +55,7 @@ public class MinSideActivity extends AppCompatActivity
 
     TextView ukedag;
     User user;
+    Kurs kurs;
     String kursData;
     static ArrayList<Kurs> kursList;
 
@@ -88,33 +96,14 @@ public class MinSideActivity extends AppCompatActivity
         if (LoginActivity.loginuser != null) {
             user = LoginActivity.loginuser;
             //velkom.setText( velkomTekst+user.fornavn);
+            ukedag = (TextView) findViewById(R.id.day);
+
+            new MinBackgroundTask(this).execute(user.nr);
+
+
+
+
         }
-
-        //Lager kalender og uke dager
-        Calendar calendar = new Calendar() {
-            @Override
-            protected int handleGetLimit(int i, int i1) {
-                return 0;
-            }
-
-            @Override
-            protected int handleComputeMonthStart(int i, int i1, boolean b) {
-                return 0;
-            }
-
-            @Override
-            protected int handleGetExtendedYear() {
-                return 0;
-            }
-        };
-
-
-        String[] days = new String[]{"Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag", "Mandag"};
-
-        String day = days[calendar.get(Calendar.DAY_OF_WEEK) - 1];
-        Kurs kurs = new Kurs("Jazz", "Mandag", "Lene");
-        ukedag = (TextView) findViewById(R.id.day);
-        ukedag.setText("Hei \n" + user.fornavn + " i dag er det " + day + "\n og du er med på " + kurs.Kursnavn);
 
 
     }
@@ -188,12 +177,12 @@ public class MinSideActivity extends AppCompatActivity
         return true;
     }
 
-    class KursBackgroundTask extends AsyncTask<Integer, Void, Boolean> {
+    class MinBackgroundTask extends AsyncTask<Integer, Void, String> {
 
         ProgressDialog progressDialog;
+        Context context;
 
-
-        public KursBackgroundTask() {
+        public MinBackgroundTask(Context context) {
 
         }
 
@@ -210,10 +199,10 @@ public class MinSideActivity extends AppCompatActivity
         }
 
         @Override
-        protected Boolean doInBackground(Integer... params) {
+        protected String doInBackground(Integer... params) {
 
-            int brukerId = params[0];
-            int kursNr=params[1];
+            String brukerId = params[0].toString();
+            //int kursNr=params[1];
             // HttpURLConnection connection= null;
             BufferedReader reader = null;
             String line = "";
@@ -223,10 +212,28 @@ public class MinSideActivity extends AppCompatActivity
 
             HttpURLConnection connection = null;
             try {
-                URL actorUrl = new URL("http://itfag.usn.no/~210144/api.php/Kurs?transform=1");
+                URL kursUrl = new URL("http://itfag.usn.no/~210144/mineKurs.php");
 
-                connection = (HttpURLConnection) actorUrl.openConnection();
-                connection.connect();
+                connection = (HttpURLConnection) kursUrl.openConnection();
+                connection.setRequestMethod("POST");
+                connection.setDoOutput(true);
+                connection.setDoInput(true);
+
+                OutputStream outputStream = connection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+
+                //Koder alle data før de sendes
+                String data = URLEncoder.encode("brukerId", "UTF-8") + "=" + URLEncoder.encode(brukerId, "UTF-8");
+
+                //Sender data
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+
+
+                //Skaffer data tilbake
+
+
                 int status = connection.getResponseCode();
                 Log.d("connection", "status " + status);
 
@@ -237,12 +244,17 @@ public class MinSideActivity extends AppCompatActivity
                 while ((responseString = reader.readLine()) != null) {
                     sb = sb.append(responseString);
                 }
-                kursData = sb.toString();
-                kursList = Kurs.lagKursListe(kursData);
-                Log.d("connection", kursData);
+
+                reader.close();
+                is.close();
 
 
-                return true;
+                String respons = sb.toString();
+
+
+                connection.disconnect();
+
+                return respons;
 
 
             } catch (MalformedURLException e) {
@@ -255,10 +267,7 @@ public class MinSideActivity extends AppCompatActivity
             } catch (NullPointerException e) {
                 e.printStackTrace();
 
-            } catch (Exception e) {
-                e.printStackTrace();
-
-            } finally {
+            }  finally {
 
                 if (reader != null) {
                     try {
@@ -268,27 +277,57 @@ public class MinSideActivity extends AppCompatActivity
                     }
                 }
 
-                connection.disconnect();
+
             }
 
 
-            return false;
+            return null;
         }
 
 
+        @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
-        protected void onPostExecute(Boolean result) {
-
-            if (result) {
-
-                progressDialog.cancel();
+        protected void onPostExecute(String result) {
 
 
-              /*  KursAdapter adapter = new KursAdapter(getContext(), kursList);
-                kursListView.setAdapter(adapter);*/
+            if (result != null) {
 
 
+                try {
+                    kursList = Kurs.lagKursListe(result);
+                    if(kursList!=null){
+                        //Lager kalender og uke dager
+                        Calendar calendar =  Calendar.getInstance();//() {
+
+
+
+                        String[] days = new String[]{"Søndag", "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag"};
+
+                        String day = days[calendar.get(Calendar.DAY_OF_WEEK) - 1];
+                       String deltar="";
+                        if (kursList != null) {
+                            kurs = kursList.get(0);
+                            for (Kurs k:kursList) {
+                                if(kurs.Dag.equals(day));
+                                deltar +=kurs.Kursnavn+",";
+                            }
+
+                            ukedag.setText("Hei \n" + user.fornavn + " i dag er det " + day + "\n og du er med på " + deltar);
+                        } else {
+                            ukedag.setText("Her er det noe muffens");
+                        }
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            } else {
+
+                Toast.makeText(MinSideActivity.this,"Result = null",Toast.LENGTH_LONG).show();
             }
+            progressDialog.cancel();
 
         }
 

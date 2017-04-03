@@ -45,7 +45,7 @@ TextView fname,ename,username,email,passw,alder;
         username.setText(user.username);
         passw.setText((user.passord));
         email.setText(user.email);
-        alder.setText(user.alder);
+       // alder.setText(user.alder);
 
         return view;
     }

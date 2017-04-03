@@ -89,6 +89,7 @@ public class Kurs {
             jsonKurs.put(KOL_NAVN_KursNr , this.KursNr);
             jsonKurs.put(KOL_NAVN_Kursnavn, this.Kursnavn);
             jsonKurs.put(KOL_NAVN_Dag, this.Dag);
+            jsonKurs.put(KOL_NAVN_Kursholder, this.Kursholder);
 
 
         } catch (JSONException e) {
