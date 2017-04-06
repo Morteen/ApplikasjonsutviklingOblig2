@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">Oblig2</string>
-    <string name="title_activity_min_side">MinSideActivity</string>
+    <string name="app_name">SBDS </string>
+    <string name="title_activity_min_side">Min Side</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_open">Åpne menyen</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Lukk menyen</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
