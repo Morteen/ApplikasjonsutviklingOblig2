@@ -165,6 +165,12 @@ public class MinSideActivity extends AppCompatActivity
             ft.commit();
 
         } else if (id == R.id.nav_slideshow) {
+            Deltar deltarfrag = new Deltar();
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.content, deltarfrag);
+            ft.addToBackStack(null);
+            ft.commit();
 
         } else if (id == R.id.nav_manage) {
 
@@ -330,7 +336,7 @@ public class MinSideActivity extends AppCompatActivity
 
             } else {
 
-                Toast.makeText(MinSideActivity.this, "Result = null", Toast.LENGTH_LONG).show();
+                Toast.makeText(MinSideActivity.this, "Beklager ingen data", Toast.LENGTH_LONG).show();
             }
             progressDialog.cancel();
 

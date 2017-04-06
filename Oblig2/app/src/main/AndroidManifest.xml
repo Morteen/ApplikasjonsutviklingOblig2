@@ -22,8 +22,6 @@
         </activity>
         <activity android:name=".RegisterActivity"
             android:configChanges="orientation|keyboardHidden"/>
-        <activity android:name=".UserAeraActivity"
-            android:configChanges="orientation|keyboardHidden"/>
         <activity
             android:name=".MinSideActivity"
             android:label="@string/title_activity_min_side"
