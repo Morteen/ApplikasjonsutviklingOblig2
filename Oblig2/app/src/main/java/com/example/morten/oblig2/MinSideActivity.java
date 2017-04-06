@@ -75,8 +75,12 @@ public class MinSideActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                VisKursFragment kursfrag = new VisKursFragment();
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.replace(R.id.content, kursfrag);
+                ft.addToBackStack(null);
+                ft.commit();
             }
         });
 
@@ -99,8 +103,6 @@ public class MinSideActivity extends AppCompatActivity
             ukedag = (TextView) findViewById(R.id.day);
 
             new MinBackgroundTask(this).execute(user.nr);
-
-
 
 
         }
@@ -230,9 +232,7 @@ public class MinSideActivity extends AppCompatActivity
                 bufferedWriter.flush();
                 bufferedWriter.close();
 
-
                 //Skaffer data tilbake
-
 
                 int status = connection.getResponseCode();
                 Log.d("connection", "status " + status);
@@ -267,7 +267,7 @@ public class MinSideActivity extends AppCompatActivity
             } catch (NullPointerException e) {
                 e.printStackTrace();
 
-            }  finally {
+            } finally {
 
                 if (reader != null) {
                     try {
@@ -295,26 +295,31 @@ public class MinSideActivity extends AppCompatActivity
 
                 try {
                     kursList = Kurs.lagKursListe(result);
-                    if(kursList!=null){
+                    if (kursList != null) {
                         //Lager kalender og uke dager
-                        Calendar calendar =  Calendar.getInstance();//() {
-
+                        Calendar calendar = Calendar.getInstance();//() {
 
 
                         String[] days = new String[]{"Søndag", "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag"};
 
                         String day = days[calendar.get(Calendar.DAY_OF_WEEK) - 1];
-                       String deltar="";
-                        if (kursList != null) {
+                        String deltar = "";
+                        if (kursList.size() != 0) {
                             kurs = kursList.get(0);
-                            for (Kurs k:kursList) {
-                                if(kurs.Dag.equals(day));
-                                deltar +=kurs.Kursnavn+",";
+                            for (Kurs k : kursList) {
+                                if (k.Dag.equals(day)) {
+                                    deltar += k.Kursnavn + ",";
+                                }
+                            }
+                            if (deltar.equals("")) {
+                                ukedag.setText("Hei " + user.fornavn + "\n i dag er det " + day + "\n Og du deltar ikke på noe kurs idag");
+                            } else {
+                                ukedag.setText("Hei " + user.fornavn + " \ni dag er det " + day + "\n og du er med på " + deltar + " kurset");
                             }
 
-                            ukedag.setText("Hei \n" + user.fornavn + " i dag er det " + day + "\n og du er med på " + deltar);
+
                         } else {
-                            ukedag.setText("Her er det noe muffens");
+                            ukedag.setText("Du er ikke påmeldt noen kurs " + user.fornavn);
                         }
 
                     }
@@ -325,7 +330,7 @@ public class MinSideActivity extends AppCompatActivity
 
             } else {
 
-                Toast.makeText(MinSideActivity.this,"Result = null",Toast.LENGTH_LONG).show();
+                Toast.makeText(MinSideActivity.this, "Result = null", Toast.LENGTH_LONG).show();
             }
             progressDialog.cancel();
 
