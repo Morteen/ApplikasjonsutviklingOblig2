@@ -2,7 +2,9 @@ package com.example.morten.oblig2;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.BufferedWriter;
@@ -23,7 +25,8 @@ import java.net.URLEncoder;
 public class BackgroundTask extends AsyncTask<String, Void, String> {
 
 
-    Context context ;
+    Context context;
+    String method = "";
 
     public BackgroundTask(Context context) {
 
@@ -36,14 +39,6 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
     protected void onPreExecute() {
 
 
-      /*  progressDialog = new ProgressDialog();
-        progressDialog.setMessage("Vent litt nå da..");
-        progressDialog.setTitle("Kobler opp...");
-        progressDialog.show();
-        progressDialog.setProgressStyle(3);
-        progressDialog.setCancelable(false);
-
-        super.onPreExecute();*/
     }
 
     @Override
@@ -51,6 +46,8 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
         String method = params[0];
         String reg_URL = "http://itfag.usn.no/~210144/register.php";
         String update_URL = "http://itfag.usn.no/~210144/update.php";
+        String add_UserToKurs = "http://itfag.usn.no/~210144/addUserToKurs.php";
+        String delete_UserOnKurs="http://itfag.usn.no/~210144/deleteUserOnKurs.php";
 
         if (method.equals("register")) {
             ////Nr,Epost,Passord,username,Fornavn,Etternavn,Alder
@@ -84,9 +81,83 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
                 bufferedWriter.close();
 
 
-                InputStream is =httpURLConnection.getInputStream();
+                InputStream is = httpURLConnection.getInputStream();
                 is.close();
                 return "Registrering er ferdig..";
+
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        } else if (method.equals("addUserToKurs")) {
+
+            String nr = params[1];
+            String KursNr = params[2];
+
+
+            try {
+                URL url = new URL(add_UserToKurs);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                OutputStream os = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+
+
+                //Koder alle data før de sendes
+                String data = URLEncoder.encode("nr", "UTF-8") + "=" + URLEncoder.encode(nr, "UTF-8") + "&" +
+                        URLEncoder.encode("kn", "UTF-8") + "=" + URLEncoder.encode(params[2], "UTF-8");
+                Log.d("Kodet data", data);
+                //legger alle data inn i bufferskriveren
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+
+
+                InputStream is = httpURLConnection.getInputStream();
+                is.close();
+                return "Du er registrert på kurset..";
+
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        }else if(method.equals("delUserOnKurs")){
+
+            String nr = params[1];
+            String KursNr = params[2];
+
+
+            try {
+                URL url = new URL(delete_UserOnKurs);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                OutputStream os = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+
+
+                //Koder alle data før de sendes
+                String data = URLEncoder.encode("nr", "UTF-8") + "=" + URLEncoder.encode(nr, "UTF-8") + "&" +
+                        URLEncoder.encode("kn", "UTF-8") + "=" + URLEncoder.encode(params[2], "UTF-8");
+                Log.d("Kodet data", data);
+                //legger alle data inn i bufferskriveren
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+
+
+                InputStream is = httpURLConnection.getInputStream();
+                is.close();
+                return "Du har kanselert kurset..";
 
 
             } catch (MalformedURLException e) {
@@ -99,14 +170,23 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
         }//her slutter register if'n
 
 
+
         return null;
     }
 
 
     @Override
     protected void onPostExecute(String result) {
-       // progressDialog.cancel();
-        Toast.makeText(this.context,result,Toast.LENGTH_SHORT).show();
+
+        if (method.equals("register")) {
+            Toast.makeText(this.context, result, Toast.LENGTH_SHORT).show();
+        } else if (method.equals("addUserToKurs")) {
+            Toast.makeText(this.context, result, Toast.LENGTH_SHORT).show();
+
+
+        }else if(method.equals("delUserOnKurs")){
+            Toast.makeText(this.context, result, Toast.LENGTH_SHORT).show();
+        }
     }
 
 

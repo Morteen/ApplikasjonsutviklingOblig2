@@ -1,5 +1,7 @@
 package com.example.morten.oblig2;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -26,20 +28,20 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import static java.lang.Integer.parseInt;
+
 
 public class VisKursFragment extends Fragment {
 
     ListView kursListView;
     String kursData;
-    static ArrayList<Kurs> kursList;
+    static ArrayList<Kurs> allekursList;
 
-    //private OnFragmentInteractionListener mListener;
+
 
     public VisKursFragment() {
         // Required empty public constructor
     }
-
-
 
 
     @Override
@@ -52,22 +54,31 @@ public class VisKursFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_vis_kurs, container, false);
+        View view = inflater.inflate(R.layout.fragment_vis_kurs, container, false);
 
-     //TODO:Legge til if connected betingelser
+        //TODO:Legge til if connected betingelser
         kursListView = (ListView) view.findViewById(R.id.list_viewKurs);
-       new KursBackgroundTask().execute();
+        new KursBackgroundTask().execute();
         kursListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(),kursList.get(position).Kursnavn,Toast.LENGTH_LONG).show();
+
+                Bundle bundel = new Bundle();
+
+                bundel.putInt("KurslisteNr", allekursList.get(position).KursNr);
+                bundel.putInt("ListPos", position);
+
+                AddDelFragment addDelFrag = new AddDelFragment();
+                addDelFrag.setArguments(bundel);
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.replace(R.id.content, addDelFrag);
+                ft.addToBackStack(null);
+                ft.commit();
+
 
             }
         });
-
-
-
-
 
 
         return view;
@@ -82,18 +93,14 @@ public class VisKursFragment extends Fragment {
     }
 
 
-
-
-
-     class KursBackgroundTask extends AsyncTask<String, Void, Boolean> {
+    class KursBackgroundTask extends AsyncTask<String, Void, Boolean> {
 
         ProgressDialog progressDialog;
 
 
+        public KursBackgroundTask() {
 
-     public   KursBackgroundTask(){
-
-     }
+        }
 
         @Override
         protected void onPreExecute() {
@@ -135,9 +142,8 @@ public class VisKursFragment extends Fragment {
                     sb = sb.append(responseString);
                 }
                 kursData = sb.toString();
-                kursList = Kurs.lagKursListe(kursData);
+                allekursList = Kurs.lagKursListe(kursData);
                 Log.d("connection", kursData);
-
 
 
                 return true;
@@ -158,7 +164,7 @@ public class VisKursFragment extends Fragment {
 
             } finally {
 
-                if( reader!=null){
+                if (reader != null) {
                     try {
                         reader.close();
                     } catch (IOException e) {
@@ -177,33 +183,19 @@ public class VisKursFragment extends Fragment {
         @Override
         protected void onPostExecute(Boolean result) {
 
-            if(result){
+            if (result) {
 
                 progressDialog.cancel();
 
 
-                KursAdapter adapter = new KursAdapter(getContext(), kursList);
+                KursAdapter adapter = new KursAdapter(getContext(), allekursList);
                 kursListView.setAdapter(adapter);
-
 
 
             }
 
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

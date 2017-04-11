@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class Deltar extends Fragment {
     ListView DeltarListView;
     String kursData;
-    static ArrayList<Kurs> kursList;
+    static ArrayList<Kurs> deltarkursList;
 
 
 
@@ -43,9 +43,9 @@ public class Deltar extends Fragment {
 
 
         View view=inflater.inflate(R.layout.fragment_deltar, container, false);
-        kursList=MinSideActivity.kursList;
+        deltarkursList=MinSideActivity.minekursList;
         DeltarListView=(ListView)view.findViewById(R.id.list_DeltarKurs);
-        KursAdapter adapter = new KursAdapter(getContext(), kursList);
+        KursAdapter adapter = new KursAdapter(getContext(), deltarkursList);
         DeltarListView.setAdapter(adapter);
 
         return view;

@@ -36,7 +36,7 @@ TextView fname,ename,username,email,passw,alder;
         fname=(TextView)view.findViewById(R.id.fname);
         ename=(TextView)view.findViewById(R.id.ename);
         username=(TextView)view.findViewById(R.id.username);
-        passw=(TextView)view.findViewById(R.id.passw);
+        passw=(TextView)view.findViewById(R.id.ePassword);
         email=(TextView)view.findViewById(R.id.email);
         alder=(TextView)view.findViewById(R.id.alder);
 

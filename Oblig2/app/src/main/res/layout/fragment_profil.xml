@@ -1,72 +1,140 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/balletwalpaper"
+    android:background="@drawable/minekursbackground"
     android:id="@+id/profil"
+   android:orientation="vertical"
     tools:context="com.example.morten.oblig2.ProfilFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Min profil"
+        android:layout_height="wrap_content"
+        android:text="@string/min_profil"
         android:gravity="center_horizontal"
-        />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_margin="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/navn" />
 
     <TextView
         android:id="@+id/fname"
+        android:layout_margin="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="46dp"
+        android:layout_marginLeft="10dp"
+              android:layout_marginTop="40dp"
         android:text="TextView" />
+
+        <TextView
+            android:layout_margin="15dp"
+            android:id="@+id/placeholderEname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/etternavn" />
 
     <TextView
         android:id="@+id/ename"
+        android:layout_margin="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:layout_alignStart="@+id/fname"
         android:layout_toRightOf="@+id/fname"
 
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="40dp"
         android:text="TextView" />
+
+
+    </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/placeholderuserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Brukernavn" />
 
     <TextView
         android:id="@+id/username"
         android:layout_width="wrap_content"
+        android:layout_marginLeft="10dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/fname"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="40dp"
         android:text="TextView" />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+       >
 
-    <TextView
-        android:id="@+id/passw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/username"
-        android:layout_toRightOf="@+id/username"
-        android:layout_marginTop="32dp"
-        android:text="TextView" />
+        <TextView
+            android:id="@+id/placeholderEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="40dp"
+            android:text="Email" />
 
     <TextView
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/username"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp"
+        android:layout_marginLeft="10dp"
+      android:layout_toRightOf="@+id/placeholderEmail"
+        android:layout_marginTop="40dp"
         android:text="TextView" />
+    </LinearLayout>
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+    <TextView
+        android:id="@+id/ePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="TextView" />
+
+
 
     <TextView
         android:id="@+id/alder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/email"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dp"
-        android:text="TextView" />
+        android:layout_toRightOf="@+id/ePassword"
+        android:layout_marginTop="40dp"></TextView>
 
 
-</RelativeLayout>
+
+</LinearLayout>
+
+
+</LinearLayout>

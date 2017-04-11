@@ -54,10 +54,10 @@ public class MinSideActivity extends AppCompatActivity
 
 
     TextView ukedag;
-    User user;
+    static User user;
     Kurs kurs;
     String kursData;
-    static ArrayList<Kurs> kursList;
+    static ArrayList<Kurs> minekursList;
 
 
     @TargetApi(Build.VERSION_CODES.N)
@@ -300,8 +300,8 @@ public class MinSideActivity extends AppCompatActivity
 
 
                 try {
-                    kursList = Kurs.lagKursListe(result);
-                    if (kursList != null) {
+                    minekursList = Kurs.lagKursListe(result);
+                    if (minekursList != null) {
                         //Lager kalender og uke dager
                         Calendar calendar = Calendar.getInstance();//() {
 
@@ -310,9 +310,9 @@ public class MinSideActivity extends AppCompatActivity
 
                         String day = days[calendar.get(Calendar.DAY_OF_WEEK) - 1];
                         String deltar = "";
-                        if (kursList.size() != 0) {
-                            kurs = kursList.get(0);
-                            for (Kurs k : kursList) {
+                        if (minekursList.size() != 0) {
+                            kurs = minekursList.get(0);
+                            for (Kurs k : minekursList) {
                                 if (k.Dag.equals(day)) {
                                     deltar += k.Kursnavn + ",";
                                 }

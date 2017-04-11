@@ -60,7 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 String method="register";
                 BackgroundTask backgroundTask= new BackgroundTask(getBaseContext());
-                backgroundTask.execute(method,user.email,user.passord,user.username,user.fornavn,user.etternavn,"50");
+                backgroundTask.execute(method,user.email,user.passord,user.username,user.fornavn,user.etternavn,etAge.getText().toString());
 
 finish();
             }
