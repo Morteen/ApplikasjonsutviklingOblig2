@@ -13,10 +13,20 @@
     <string name="navn">Navn </string>
     <string name="etternavn">Etternavn </string>
     <string name="vil_du_melde_deg_p_dette_kurset">Vil du melde deg på dette kurset ?</string>
+    <string name="userUpdate" id="10">Dine opplysninger er oppdatert ?</string>
 
 
-    <string name="slett">Slett</string>
+    <string name="slett" >Slett</string>
     <string name="legg_til">Legg til</string>
     <string name="RegMessage">Du er allerede registrert på dette kurset</string>
     <string name="DeleteMessage">Du er ikke registrert på dette kurset</string>
+    <string name="alder">Alder</string>
+    <string name="email">Email</string>
+    <string name="passord">Passord:</string>
+    <string name="brukernavn">Brukernavn:</string>
+    <string name="alle_kurs_p_sbds">Alle kurs på SBDS</string>
+    <string name="mine_kurs">Mine kurs</string>
+    <string name="min_profilTitle">Min profil</string>
+    <string name="min_profilDrawer">Min profil</string>
+    <string name="UpdateUserMessage">Dine opplysninger er oppdatert</string>
 </resources>

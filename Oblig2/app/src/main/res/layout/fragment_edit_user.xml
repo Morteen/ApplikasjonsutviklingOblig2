@@ -1,0 +1,84 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/balletwalpaper"
+    tools:context="com.example.morten.oblig2.EditUserFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/editUserFname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Fornavn"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="-58dp" />
+
+    <EditText
+        android:id="@+id/editUserLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editUserFname"
+        android:layout_marginTop="15dp"
+        android:hint="Etternavn"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="-58dp" />
+
+    <EditText
+        android:id="@+id/editUserUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editUserLastName"
+        android:layout_marginTop="15dp"
+        android:hint="Brukernavn" />
+
+    <EditText
+        android:id="@+id/editUserPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editUserUsername"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Passord"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/editUserEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editUserPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Email" />
+
+    <EditText
+        android:id="@+id/editUserAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editUserEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Alder"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/editUserButton"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editUserAge"
+        android:layout_marginTop="15dp"
+        android:text="Oppdater mine opplysninger" />
+    </RelativeLayout>
+
+
+</FrameLayout>
+
+

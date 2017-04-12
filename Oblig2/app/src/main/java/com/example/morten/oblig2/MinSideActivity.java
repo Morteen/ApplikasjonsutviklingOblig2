@@ -6,6 +6,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -173,12 +174,24 @@ public class MinSideActivity extends AppCompatActivity
             ft.commit();
 
         } else if (id == R.id.nav_manage) {
+            VisKursFragment kursfrag = new VisKursFragment();
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.content, kursfrag);
+            ft.addToBackStack(null);
+            ft.commit();
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.update_user) {
+        EditUserFragment editUserfrag= new EditUserFragment();
+        FragmentManager fm = getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.content, editUserfrag);
+            ft.addToBackStack(null);
+            ft.commit();
 
-        } else if (id == R.id.nav_send) {
+        }/* else if (id == R.id.nav_send) {
 
-        }
+        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -314,7 +327,7 @@ public class MinSideActivity extends AppCompatActivity
                             kurs = minekursList.get(0);
                             for (Kurs k : minekursList) {
                                 if (k.Dag.equals(day)) {
-                                    deltar += k.Kursnavn + ",";
+                                    deltar += k.Kursnavn ;
                                 }
                             }
                             if (deltar.equals("")) {
@@ -344,4 +357,10 @@ public class MinSideActivity extends AppCompatActivity
 
 
     }//Slutt på Asynk
+
+
+    public static void returnToMinside(Context context){
+        Intent i = new Intent(context, MinSideActivity.class);
+       context.startActivity(i);
+    }
 }

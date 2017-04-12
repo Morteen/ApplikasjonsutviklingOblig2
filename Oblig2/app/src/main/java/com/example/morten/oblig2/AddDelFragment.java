@@ -79,8 +79,7 @@ public class AddDelFragment extends Fragment {
                     Toast.makeText(getActivity(), regMessage + ":" + kurs.Kursnavn, Toast.LENGTH_SHORT).show();
 
                 }
-                Intent i = new Intent(getActivity(), MinSideActivity.class);
-                getActivity().startActivity(i);
+                MinSideActivity.returnToMinside(getActivity());
 
             }
         });
@@ -100,8 +99,7 @@ public class AddDelFragment extends Fragment {
                     String delMessage = getResources().getString(R.string.DeleteMessage);
                     Toast.makeText(getActivity(), delMessage + ":" + kurs.Kursnavn, Toast.LENGTH_SHORT).show();
                 }
-                Intent i = new Intent(getActivity(), MinSideActivity.class);
-                getActivity().startActivity(i);
+                MinSideActivity.returnToMinside(getActivity());
             }
         });
         return view;
