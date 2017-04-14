@@ -103,7 +103,7 @@ public class MinSideActivity extends AppCompatActivity
             //velkom.setText( velkomTekst+user.fornavn);
             ukedag = (TextView) findViewById(R.id.day);
 
-            new MinBackgroundTask(this).execute(user.nr);
+            new MinBackgroundTask(this).execute(user.getNr());
 
 
         }
@@ -331,14 +331,14 @@ public class MinSideActivity extends AppCompatActivity
                                 }
                             }
                             if (deltar.equals("")) {
-                                ukedag.setText("Hei " + user.fornavn + "\n i dag er det " + day + "\n Og du deltar ikke på noe kurs idag");
+                                ukedag.setText("Hei " + user.getFornavn() + "\n i dag er det " + day + "\n Og du deltar ikke på noe kurs idag");
                             } else {
-                                ukedag.setText("Hei " + user.fornavn + " \ni dag er det " + day + "\n og du er med på " + deltar + " kurset");
+                                ukedag.setText("Hei " + user.getFornavn() + " \ni dag er det " + day + "\n og du er med på " + deltar + " kurset");
                             }
 
 
                         } else {
-                            ukedag.setText("Du er ikke påmeldt noen kurs " + user.fornavn);
+                            ukedag.setText("Du er ikke påmeldt noen kurs " + user.getFornavn());
                         }
 
                     }

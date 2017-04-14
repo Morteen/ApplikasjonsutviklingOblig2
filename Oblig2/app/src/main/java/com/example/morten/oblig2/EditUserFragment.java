@@ -14,10 +14,12 @@ import android.widget.Toast;
 
 public class EditUserFragment extends Fragment {
 
-
+    /**
+     * Fragmentet viser brukerinformasjon og lar brukeren redigere dem
+     */
     EditText userFname, userLname, userUsername, userPassword, userEmail, userAge;
     Button updateBtn;
-    private String method="update";
+    private String method = "update";
     private String userNr;
     private User user;
 
@@ -61,47 +63,39 @@ public class EditUserFragment extends Fragment {
         userPassword = (EditText) view.findViewById(R.id.editUserPassword);
         userEmail = (EditText) view.findViewById(R.id.editUserEmail);
         userAge = (EditText) view.findViewById(R.id.editUserAge);
-        updateBtn=(Button)view.findViewById(R.id.editUserButton);
+        updateBtn = (Button) view.findViewById(R.id.editUserButton);
 
-         user=MinSideActivity.user;
-        userFname.setText(user.fornavn);
-        userLname.setText(user.etternavn);
-        userUsername.setText(user.username);
-        userPassword.setText(user.passord);
-        userEmail.setText(user.email);
-        userAge.setText(Integer.toString(user.alder));
-        userNr=Integer.toString(user.nr);
+        user = MinSideActivity.user;
+        userFname.setText(user.getFornavn());
+        userLname.setText(user.getEtternavn());
+        userUsername.setText(user.getUsername());
+        userPassword.setText(user.getPassord());
+        userEmail.setText(user.getEmail());
+        userAge.setText(Integer.toString(user.getAlder()));
+        userNr = Integer.toString(user.getNr());
 
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                new BackgroundTask(getActivity()).execute(method,userEmail.getText().toString(),userPassword.getText().toString(),
-                        userUsername.getText().toString(),userFname.getText().toString()
-                        ,userLname.getText().toString(),userAge.getText().toString(),userNr);
+                new BackgroundTask(getActivity()).execute(method, userEmail.getText().toString(), userPassword.getText().toString(),
+                        userUsername.getText().toString(), userFname.getText().toString()
+                        , userLname.getText().toString(), userAge.getText().toString(), userNr);
 
-               MinSideActivity.user.fornavn=userFname.getText().toString();
-                MinSideActivity.user.etternavn=userLname.getText().toString();
-                MinSideActivity.user.email=userEmail.getText().toString();
-                MinSideActivity.user.passord=userPassword.getText().toString();
-                MinSideActivity.user.alder=Integer.parseInt(userAge.getText().toString());
+                MinSideActivity.user.setFornavn(userFname.getText().toString());
+                MinSideActivity.user.setEtternavn(userLname.getText().toString());
+                MinSideActivity.user.setEmail(userEmail.getText().toString());
+                MinSideActivity.user.setPassord(userPassword.getText().toString());
+                MinSideActivity.user.setAlder(Integer.parseInt(userAge.getText().toString()));
 
-        String UpdateMessage=getString(R.string.UpdateUserMessage);
-                Toast.makeText(getActivity(),UpdateMessage,Toast.LENGTH_LONG).show();
+                String UpdateMessage = getString(R.string.UpdateUserMessage);
+                Toast.makeText(getActivity(), UpdateMessage, Toast.LENGTH_LONG).show();
 
                 MinSideActivity.returnToMinside(getActivity());
 
             }
         });
-
-
-
-
-
-
-
-
 
 
         return view;

@@ -64,9 +64,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-
-
-                Intent registrerIntent = new Intent(LoginActivity.this,RegisterActivity.class);
+                Intent registrerIntent = new Intent(LoginActivity.this,RegisterActivity.class);//RegisterActivity
                 LoginActivity.this.startActivity(registrerIntent);
 
             }
@@ -175,24 +173,26 @@ public class LoginActivity extends AppCompatActivity {
 
                   if(userList.size()>0){
                       loginuser = userList.get(0);
-                      Toast.makeText(getApplicationContext(), loginuser.fornavn, Toast.LENGTH_SHORT).show();
-
-                    Intent minSideIntent = new Intent(LoginActivity.this,MinSideActivity.class);//MinsideActivity
-                    LoginActivity.this.startActivity(minSideIntent);
+                      Toast.makeText(getApplicationContext(), loginuser.getFornavn(), Toast.LENGTH_SHORT).show();
+                      MinSideActivity.returnToMinside(LoginActivity.this);
                       finish();
 
             }else if(userList.size()==0||userList==null){
-                    Toast.makeText(LoginActivity.this,"Ser ikke ut som du er registrert",Toast.LENGTH_SHORT).show();
 
-                    Intent registrerIntent = new Intent(LoginActivity.this,RegisterActivity.class);//RegisterActivity
-                    LoginActivity.this.startActivity(registrerIntent);
+
+
+                    Toast.makeText(LoginActivity.this,getString(R.string.UserLoginErrorMessage),Toast.LENGTH_SHORT).show();
+
+                      Intent registrerIntent = new Intent(LoginActivity.this,RegisterActivity.class);//RegisterActivity
+                      LoginActivity.this.startActivity(registrerIntent);
 
                 }
 
 
 
             } else  {
-                Toast.makeText(getApplicationContext(), "Får ikke hentet data fra server", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(getApplicationContext(),getString(R.string.NoDataLoginErrorMessage), Toast.LENGTH_SHORT).show();
 
                 progressDialog.cancel();
 

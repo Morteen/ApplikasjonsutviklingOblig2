@@ -40,12 +40,12 @@ TextView fname,ename,username,email,passw,alder;
         email=(TextView)view.findViewById(R.id.email);
         alder=(TextView)view.findViewById(R.id.alder);
 
-        fname.setText(user.fornavn);
-        ename.setText(user.etternavn);
-        username.setText(user.username);
-        passw.setText((user.passord));
-        email.setText(user.email);
-       alder.setText(Integer.toString(user.alder));
+        fname.setText(user.getFornavn());
+        ename.setText(user.getEtternavn());
+        username.setText(user.getUsername());
+        passw.setText((user.getPassord()));
+        email.setText(user.getEmail());
+       alder.setText(Integer.toString(user.getAlder()));
 
         return view;
     }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SBDS </string>
+    <string name="app_name">SbdS </string>
     <string name="title_activity_min_side">Min Side</string>
 
     <string name="navigation_drawer_open">Åpne menyen</string>
@@ -7,13 +7,13 @@
 
     <string name="action_settings">Lukk menyen</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
     <string name="min_profil">Min profil</string>
     <string name="navn">Navn </string>
     <string name="etternavn">Etternavn </string>
     <string name="vil_du_melde_deg_p_dette_kurset">Vil du melde deg på dette kurset ?</string>
-    <string name="userUpdate" id="10">Dine opplysninger er oppdatert ?</string>
+
 
 
     <string name="slett" >Slett</string>
@@ -29,4 +29,9 @@
     <string name="min_profilTitle">Min profil</string>
     <string name="min_profilDrawer">Min profil</string>
     <string name="UpdateUserMessage">Dine opplysninger er oppdatert</string>
-</resources>
+    <string name="UserLoginErrorMessage">Det ser ikke ut som du er registrert</string>
+    <string name="NoDataLoginErrorMessage">Får ikke hentet data fra server</string>
+    <string name="ErrorMessageUserNameCheck">Bruker navnet er brukt tidligere \n Prøv et annet</string>
+    <string name="ConnectErrorMessageUserNameCheck">Beklager  vi kunne ikke koble til databasen</string>
+    <string name="ErrorUserReg">Du må fylle ut alle felter</string>
+    </resources>

@@ -14,7 +14,7 @@ public class User {
 
 
 
-    String fornavn, etternavn, passord, username,email;
+   private String fornavn, etternavn, passord, username,email;
     int nr ,alder;
 
 
@@ -106,7 +106,61 @@ public class User {
         return jsonUser;
     }
 
+    public String getFornavn() {
+        return fornavn;
+    }
 
+    public void setFornavn(String fornavn) {
+        this.fornavn = fornavn;
+    }
+
+    public String getEtternavn() {
+        return etternavn;
+    }
+
+    public void setEtternavn(String etternavn) {
+        this.etternavn = etternavn;
+    }
+
+    public String getPassord() {
+        return passord;
+    }
+
+    public void setPassord(String passord) {
+        this.passord = passord;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getNr() {
+        return nr;
+    }
+
+    public void setNr(int nr) {
+        this.nr = nr;
+    }
+
+    public int getAlder() {
+        return alder;
+    }
+
+    public void setAlder(int alder) {
+        this.alder = alder;
+    }
 }
 
 

@@ -47,7 +47,7 @@ public class AddDelFragment extends Fragment {
         add = (Button) view.findViewById(R.id.add);
         delete = (Button) view.findViewById(R.id.delete);
 
-        userNr = MinSideActivity.user.nr;
+        userNr = MinSideActivity.user.getNr();
         Bundle bundle = getArguments();
         listNr = bundle.getInt("KurslisteNr");
         listPos = bundle.getInt("ListPos");
