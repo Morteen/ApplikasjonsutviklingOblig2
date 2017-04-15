@@ -69,13 +69,13 @@ public class KursAdapter extends BaseAdapter {
 
 
         if (position == 0) {
-            viewHolder.KursViewName.setText("Kursnavn\n\n" + currentKurs.Kursnavn);
-            viewHolder.KursViewDag.setText("Dag\n\n" + currentKurs.Dag);
-            viewHolder.KursViewKursholder.setText("Lærer\n\n" + currentKurs.Kursholder);
+            viewHolder.KursViewName.setText("Kursnavn\n\n" + currentKurs.getKursnavn());
+            viewHolder.KursViewDag.setText("Dag\n\n" + currentKurs.getDag());
+            viewHolder.KursViewKursholder.setText("Lærer\n\n" + currentKurs.getKursholder());
         } else {
-            viewHolder.KursViewName.setText(currentKurs.Kursnavn);
-            viewHolder.KursViewDag.setText(currentKurs.Dag);
-            viewHolder.KursViewKursholder.setText(currentKurs.Kursholder);
+            viewHolder.KursViewName.setText(currentKurs.getKursnavn());
+            viewHolder.KursViewDag.setText(currentKurs.getDag());
+            viewHolder.KursViewKursholder.setText(currentKurs.getKursholder());
         }
         return convertView;
     }

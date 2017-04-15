@@ -326,8 +326,8 @@ public class MinSideActivity extends AppCompatActivity
                         if (minekursList.size() != 0) {
                             kurs = minekursList.get(0);
                             for (Kurs k : minekursList) {
-                                if (k.Dag.equals(day)) {
-                                    deltar += k.Kursnavn ;
+                                if (k.getDag().equals(day)) {
+                                    deltar += k.getKursnavn() ;
                                 }
                             }
                             if (deltar.equals("")) {

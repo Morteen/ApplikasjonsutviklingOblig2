@@ -12,12 +12,12 @@
     <string name="min_profil">Min profil</string>
     <string name="navn">Navn </string>
     <string name="etternavn">Etternavn </string>
-    <string name="vil_du_melde_deg_p_dette_kurset">Vil du melde deg på dette kurset ?</string>
+    <string name="vil_du_melde_deg_p_dette_kurset">Vil du slutt eller melde deg på dette kurset?</string>
 
 
 
-    <string name="slett" >Slett</string>
-    <string name="legg_til">Legg til</string>
+    <string name="deleteKurs" >Slett kurs</string>
+    <string name="AddKurs">Legg til kurs</string>
     <string name="RegMessage">Du er allerede registrert på dette kurset</string>
     <string name="DeleteMessage">Du er ikke registrert på dette kurset</string>
     <string name="alder">Alder</string>
@@ -34,4 +34,5 @@
     <string name="ErrorMessageUserNameCheck">Bruker navnet er brukt tidligere \n Prøv et annet</string>
     <string name="ConnectErrorMessageUserNameCheck">Beklager  vi kunne ikke koble til databasen</string>
     <string name="ErrorUserReg">Du må fylle ut alle felter</string>
-    </resources>
+    <string name="oppdater">=Oppdater</string>
+</resources>

@@ -56,7 +56,7 @@ public class AddDelFragment extends Fragment {
         kursNrString = Integer.toString(listNr);
          sjekk=false;
         for(Kurs k : MinSideActivity.minekursList){
-            if(k.Kursnavn!= null && k.Kursnavn.contains(kurs.Kursnavn)){
+            if(k.getKursnavn()!= null && k.getKursnavn().contains(kurs.getKursnavn())){
                 sjekk=true;
             }
 
@@ -76,7 +76,7 @@ public class AddDelFragment extends Fragment {
 
                 } else {
                     String regMessage = getResources().getString(R.string.RegMessage);
-                    Toast.makeText(getActivity(), regMessage + ":" + kurs.Kursnavn, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), regMessage + ":" + kurs.getKursnavn(), Toast.LENGTH_SHORT).show();
 
                 }
                 MinSideActivity.returnToMinside(getActivity());
@@ -97,7 +97,7 @@ public class AddDelFragment extends Fragment {
 
                 } else {
                     String delMessage = getResources().getString(R.string.DeleteMessage);
-                    Toast.makeText(getActivity(), delMessage + ":" + kurs.Kursnavn, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), delMessage + ":" + kurs.getKursnavn(), Toast.LENGTH_SHORT).show();
                 }
                 MinSideActivity.returnToMinside(getActivity());
             }

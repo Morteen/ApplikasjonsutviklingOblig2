@@ -22,43 +22,43 @@
             android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="13dp"
             android:ems="10"
             android:hint="Brukernavn"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:layout_above="@+id/etPassword"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="43dp" />
 
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/etUsername"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="33dp"
             android:ems="10"
             android:hint="Passord"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:layout_above="@+id/btnLogin"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="40dp" />
 
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/etPassword"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="39dp"
-            android:text="Login" />
+            android:text="Login"
+            android:layout_above="@+id/tvRegistrerHer"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="102dp" />
 
     <TextView
         android:id="@+id/tvRegistrerHer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnLogin"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp"
         android:text="Registrer her!"
         android:textAlignment="center"
-        android:textAppearance="@android:style/TextAppearance.Material" />
+        android:textAppearance="@android:style/TextAppearance.Material"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="69dp" />
 
     </RelativeLayout>
 

@@ -65,7 +65,7 @@ public class VisKursFragment extends Fragment {
 
                 Bundle bundel = new Bundle();
 
-                bundel.putInt("KurslisteNr", allekursList.get(position).KursNr);
+                bundel.putInt("KurslisteNr", allekursList.get(position).getKursNr());
                 bundel.putInt("ListPos", position);
 
                 AddDelFragment addDelFrag = new AddDelFragment();

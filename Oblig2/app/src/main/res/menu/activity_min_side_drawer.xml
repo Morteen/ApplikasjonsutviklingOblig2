@@ -28,7 +28,7 @@
                 android:icon="@drawable/ic_menu_slideshow"
                 android:title="@string/mine_kurs" />
             <item
-                android:title="Uppdater"
+                android:title="@string/oppdater"
                 android:icon="@mipmap/ic_face_black_24dp"
                 android:id="@+id/update_user"/>
         </menu>

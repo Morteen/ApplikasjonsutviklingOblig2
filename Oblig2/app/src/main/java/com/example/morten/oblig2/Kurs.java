@@ -14,8 +14,8 @@ public class Kurs {
 
 
     //	KursNr 	Kursnavn 	Dag 	Kursholder
-    String Kursnavn, Dag, Kursholder;
-    int KursNr;
+    private String Kursnavn, Dag, Kursholder;
+    private int KursNr;
 
 
 
@@ -98,5 +98,35 @@ public class Kurs {
         return jsonKurs;
     }
 
+    public String getKursnavn() {
+        return Kursnavn;
+    }
 
+    public void setKursnavn(String kursnavn) {
+        Kursnavn = kursnavn;
+    }
+
+    public String getDag() {
+        return Dag;
+    }
+
+    public void setDag(String dag) {
+        Dag = dag;
+    }
+
+    public String getKursholder() {
+        return Kursholder;
+    }
+
+    public void setKursholder(String kursholder) {
+        Kursholder = kursholder;
+    }
+
+    public int getKursNr() {
+        return KursNr;
+    }
+
+    public void setKursNr(int kursNr) {
+        KursNr = kursNr;
+    }
 }

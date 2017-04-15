@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/balletwalpaper"
-    android:padding="15dp"
-    tools:context="com.example.morten.oblig2.RegisterActivity">
+    android:layout_height="match_parent">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/balletwalpaper"
+        android:padding="15dp"
+        >
+
 
     <EditText
         android:id="@+id/eFName"
@@ -76,6 +83,7 @@
         android:layout_below="@+id/eAge"
         android:layout_marginTop="15dp"
         android:text="Registrer" />
+    </RelativeLayout>
 
 
-</RelativeLayout>
+</ScrollView>
