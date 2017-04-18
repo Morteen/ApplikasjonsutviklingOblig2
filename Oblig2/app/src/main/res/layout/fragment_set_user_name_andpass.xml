@@ -6,48 +6,59 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/balletwalpaper">
 
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Husk brukernavn og passord"
-            android:layout_marginBottom="52dp"
-            android:layout_above="@+id/sharedEtextusernam"
-            android:layout_centerHorizontal="true" />
+            android:text="@string/husk_brukernavn_og_passord"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp" />
 
         <EditText
             android:id="@+id/sharedEtextusernam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/brukernavnShared"
             android:inputType="textPersonName"
-            android:hint="Brukernavn"
-            android:layout_alignBottom="@+id/sharedEtextPassW"
+            android:layout_below="@+id/textView2"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="72dp" />
+            android:layout_marginTop="29dp" />
 
         <EditText
             android:id="@+id/sharedEtextPassW"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/passordShared"
             android:inputType="textPersonName"
-            android:hint="Passord"
-            android:layout_above="@+id/SharedPrefBtn"
+            android:layout_below="@+id/sharedEtextusernam"
             android:layout_alignStart="@+id/sharedEtextusernam"
-            android:layout_marginBottom="38dp" />
+            android:layout_marginTop="31dp" />
 
         <Button
             android:id="@+id/SharedPrefBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lagre innstillinger"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="134dp" />
+            android:text="@string/lagre_innstillinger"
+            android:layout_below="@+id/sharedEtextPassW"
+            android:layout_alignStart="@+id/textView2"
+            android:layout_marginTop="58dp" />
+
+        <Button
+            android:id="@+id/SharedPrefDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/SharedPrefBtn"
+            android:layout_marginTop="70dp"
+            android:text="@string/deleteShared"
+            android:layout_alignEnd="@+id/SharedPrefBtn"
+            android:layout_alignStart="@+id/SharedPrefBtn" />
     </RelativeLayout>
 
 </FrameLayout>

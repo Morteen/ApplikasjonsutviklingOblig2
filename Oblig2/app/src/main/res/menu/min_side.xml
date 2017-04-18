@@ -8,9 +8,5 @@
     app:showAsAction="never" />
 
 
-    <item
-        android:id="@+id/sharedPref"
-        android:orderInCategory="100"
-        android:title="Lagre innstillinger"
-        android:onClick="goToSharedPref" />
+
 </menu>

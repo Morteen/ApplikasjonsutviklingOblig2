@@ -48,10 +48,14 @@ public class LoginActivity extends AppCompatActivity {
         final TextView reglink = (TextView) findViewById(R.id.tvRegistrerHer);
 
         SharedPreferences sharedPreferences = getSharedPreferences("userInfo", getApplicationContext().MODE_PRIVATE);
-        if(sharedPreferences !=null){
+        if(!sharedPreferences.getString("username","").equals("")){
 
         eUserName.setText(sharedPreferences.getString("username",""));
         ePassword.setText(sharedPreferences.getString("password",""));
+        }else{
+            eUserName.setText("");
+            ePassword.setText("");
+
         }
 
 

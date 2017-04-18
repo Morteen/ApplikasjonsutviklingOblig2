@@ -5,7 +5,7 @@
     <string name="navigation_drawer_open">Åpne menyen</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Lukk menyen</string>
+    <string name="action_settings">Lagre innstillinger</string>
 
 
     <string name="min_profil">Min profil</string>
@@ -49,4 +49,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="deleteShared">Slett opplysninger</string>
+    <string name="lagre_innstillinger">Lagre innstillinger</string>
+    <string name="passordShared">Passord</string>
+    <string name="brukernavnShared">Brukernavn</string>
+    <string name="husk_brukernavn_og_passord">Husk brukernavn og passord</string>
 </resources>

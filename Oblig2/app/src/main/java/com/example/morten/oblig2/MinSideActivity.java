@@ -73,6 +73,8 @@ public class MinSideActivity extends AppCompatActivity
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
                 VisKursFragment kursfrag = new VisKursFragment();
@@ -102,7 +104,6 @@ public class MinSideActivity extends AppCompatActivity
             user = LoginActivity.loginuser;
 
             ukedag = (TextView) findViewById(R.id.day);
-
             new MinBackgroundTask(this).execute(user.getNr());
 
 
@@ -137,6 +138,14 @@ public class MinSideActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+            SetUserNameAndpass sharedpref = new SetUserNameAndpass();
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.content, sharedpref);
+            ft.addToBackStack(null);
+            ft.commit();
+
             return true;
         }
 
@@ -189,7 +198,13 @@ public class MinSideActivity extends AppCompatActivity
             ft.addToBackStack(null);
             ft.commit();
 
-        }/* else if (id == R.id.nav_send) {
+        }/*else if (id == R.id.sharedPref) {
+            SetUserNameAndpass sharedpref = new SetUserNameAndpass();
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.content, sharedpref);
+            ft.addToBackStack(null);
+            ft.commit();
 
         }*/
 
@@ -368,14 +383,5 @@ public class MinSideActivity extends AppCompatActivity
        context.startActivity(i);
     }
 
-    private void goToSharedPref(){
 
-        SetUserNameAndpass sharedpref = new SetUserNameAndpass();
-        FragmentManager fm = getFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.content, sharedpref);
-        ft.addToBackStack(null);
-        ft.commit();
-
-    }
 }
