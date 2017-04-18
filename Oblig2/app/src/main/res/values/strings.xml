@@ -1,12 +1,11 @@
 <resources>
     <string name="app_name">SbdS </string>
-    <string name="title_activity_min_side">Min Side</string>
+    <string name="title_activity_min_side">SbdS</string>
 
     <string name="navigation_drawer_open">Åpne menyen</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Lukk menyen</string>
-
 
 
     <string name="min_profil">Min profil</string>
@@ -15,8 +14,7 @@
     <string name="vil_du_melde_deg_p_dette_kurset">Vil du slutt eller melde deg på dette kurset?</string>
 
 
-
-    <string name="deleteKurs" >Slett kurs</string>
+    <string name="deleteKurs">Slett kurs</string>
     <string name="AddKurs">Legg til kurs</string>
     <string name="RegMessage">Du er allerede registrert på dette kurset</string>
     <string name="DeleteMessage">Du er ikke registrert på dette kurset</string>
@@ -34,5 +32,21 @@
     <string name="ErrorMessageUserNameCheck">Bruker navnet er brukt tidligere \n Prøv et annet</string>
     <string name="ConnectErrorMessageUserNameCheck">Beklager  vi kunne ikke koble til databasen</string>
     <string name="ErrorUserReg">Du må fylle ut alle felter</string>
-    <string name="oppdater">=Oppdater</string>
+    <string name="oppdater">Oppdater profil</string>
+    <string name="addToKurs">Meld meg på kurset</string>
+    <string name="delUserFromKurs">Slett meg fra dette kurset</string>
+    <string name="uppdateBtn">Oppdater mine opplysninger</string>
+    <string name="editUserAlder">Alder</string>
+    <string name="editUseremail">Email</string>
+    <string name="editUserpassord">Passord</string>
+    <string name="editUserbrukernavn">Brukernavn</string>
+    <string name="editUserEtternavn">Etternavn</string>
+    <string name="editUserfornavn">Fornavn</string>
+    <string name="registrer_her">Registrer deg her!</string>
+    <string name="ConnectionErrorMessage">Du er ikke koblet til internett</string>
+    <string name="nokursToDay">Du er ikke påmeldt noen kurs</string>
+    <string name="NoDataInDatabase">Beklager ingen data</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

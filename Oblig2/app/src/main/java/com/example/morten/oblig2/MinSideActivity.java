@@ -54,11 +54,10 @@ public class MinSideActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    TextView ukedag;
+    private TextView ukedag;
     static User user;
     Kurs kurs;
-    String kursData;
-    static ArrayList<Kurs> minekursList;
+        static ArrayList<Kurs> minekursList;
 
 
     @TargetApi(Build.VERSION_CODES.N)
@@ -94,13 +93,14 @@ public class MinSideActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+/**
+ *
 
-        // Henter bruker fra Loginsiden
-        ///Default
-        //Henter User objektet fra Login
+ Henter User objektet fra Login
+ */
         if (LoginActivity.loginuser != null) {
             user = LoginActivity.loginuser;
-            //velkom.setText( velkomTekst+user.fornavn);
+
             ukedag = (TextView) findViewById(R.id.day);
 
             new MinBackgroundTask(this).execute(user.getNr());
@@ -331,14 +331,15 @@ public class MinSideActivity extends AppCompatActivity
                                 }
                             }
                             if (deltar.equals("")) {
-                                ukedag.setText("Hei " + user.getFornavn() + "\n i dag er det " + day + "\n Og du deltar ikke på noe kurs idag");
+                                ukedag.setText("Hei " + user.getFornavn() + ".\n I dag er det " + day + "\n Og du deltar ikke på noe kurs idag");
                             } else {
-                                ukedag.setText("Hei " + user.getFornavn() + " \ni dag er det " + day + "\n og du er med på " + deltar + " kurset");
+                                ukedag.setText("Hei " + user.getFornavn() + ". \nI dag er det " + day + "\n og du er med på " + deltar + " kurset");
                             }
 
 
                         } else {
-                            ukedag.setText("Du er ikke påmeldt noen kurs " + user.getFornavn());
+
+                            ukedag.setText(getString(R.string.nokursToDay) +" "+ user.getFornavn());
                         }
 
                     }
@@ -349,7 +350,7 @@ public class MinSideActivity extends AppCompatActivity
 
             } else {
 
-                Toast.makeText(MinSideActivity.this, "Beklager ingen data", Toast.LENGTH_LONG).show();
+                Toast.makeText(MinSideActivity.this, getString(R.string.NoDataInDatabase), Toast.LENGTH_LONG).show();
             }
             progressDialog.cancel();
 
@@ -358,9 +359,23 @@ public class MinSideActivity extends AppCompatActivity
 
     }//Slutt på Asynk
 
-
+    /**
+     * En metode for å sende brukeren tilbake til denne siden
+     * @param context
+     */
     public static void returnToMinside(Context context){
         Intent i = new Intent(context, MinSideActivity.class);
        context.startActivity(i);
+    }
+
+    private void goToSharedPref(){
+
+        SetUserNameAndpass sharedpref = new SetUserNameAndpass();
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.content, sharedpref);
+        ft.addToBackStack(null);
+        ft.commit();
+
     }
 }

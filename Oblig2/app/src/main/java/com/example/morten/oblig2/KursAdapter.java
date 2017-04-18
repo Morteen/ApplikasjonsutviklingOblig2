@@ -1,4 +1,7 @@
 package com.example.morten.oblig2;
+/**
+ * Dette er et adapter som viser obkejter av Kurs klassen  i en liste
+ */
 
 import android.content.Context;
 import android.view.LayoutInflater;

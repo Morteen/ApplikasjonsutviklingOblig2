@@ -1,4 +1,7 @@
 package com.example.morten.oblig2;
+/**
+ * Dette er en klasse som bygger et kurs-objekt fra JSON opplysninger fra databasen
+ */
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,7 +21,6 @@ public class Kurs {
     private int KursNr;
 
 
-
     static final String TABELL_NAVN = "Kurs";
     static final String KOL_NAVN_Kursnavn = "Kursnavn";
     static final String KOL_NAVN_Dag = "Dag";
@@ -26,24 +28,19 @@ public class Kurs {
     static final String KOL_NAVN_KursNr = "KursNr";
 
 
-
-
-
-
-
     // "Vanlig" konstruktør
-    public Kurs(String Kursnavn, String Dag, String Kursholder,int KursNr) {
-        this.Kursnavn=Kursnavn;
-        this.Dag=Dag;
-        this.Kursholder=Kursholder;
-        this.KursNr=KursNr;
+    public Kurs(String Kursnavn, String Dag, String Kursholder, int KursNr) {
+        this.Kursnavn = Kursnavn;
+        this.Dag = Dag;
+        this.Kursholder = Kursholder;
+        this.KursNr = KursNr;
 
     }
 
     public Kurs(String Kursnavn, String Dag, String Kursholder) {
-        this.Kursnavn=Kursnavn;
-        this.Dag=Dag;
-        this.Kursholder=Kursholder;
+        this.Kursnavn = Kursnavn;
+        this.Dag = Dag;
+        this.Kursholder = Kursholder;
 
 
     }
@@ -54,7 +51,7 @@ public class Kurs {
 
     // Konstruktør som bygger userobjekt basert på et JSONObject-objekt
     public Kurs(JSONObject jsonUser) {
-        this.Kursnavn= jsonUser.optString(KOL_NAVN_Kursnavn );
+        this.Kursnavn = jsonUser.optString(KOL_NAVN_Kursnavn);
         this.Dag = jsonUser.optString(KOL_NAVN_Dag);
         this.Kursholder = jsonUser.optString(KOL_NAVN_Kursholder);
         this.KursNr = jsonUser.optInt(KOL_NAVN_KursNr);
@@ -86,7 +83,7 @@ public class Kurs {
     public JSONObject toJSONObject() {
         JSONObject jsonKurs = new JSONObject();
         try {
-            jsonKurs.put(KOL_NAVN_KursNr , this.KursNr);
+            jsonKurs.put(KOL_NAVN_KursNr, this.KursNr);
             jsonKurs.put(KOL_NAVN_Kursnavn, this.Kursnavn);
             jsonKurs.put(KOL_NAVN_Dag, this.Dag);
             jsonKurs.put(KOL_NAVN_Kursholder, this.Kursholder);

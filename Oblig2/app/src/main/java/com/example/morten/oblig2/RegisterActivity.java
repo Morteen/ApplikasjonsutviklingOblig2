@@ -1,4 +1,7 @@
 package com.example.morten.oblig2;
+/**
+ * Dette er en activity som lar en ny bruker registrere seg
+ */
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -69,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }else{
                     age="0" ;
                 }
-                Toast.makeText(getBaseContext(),"Navn lengde"+ etName.getText().length(), Toast.LENGTH_LONG).show();
+
 
                 if(etName.getText().length()>0&&etLastName.getText().length()>0&&etUserName.getText().length()>0
                         &&etPassword.getText().length()>0){

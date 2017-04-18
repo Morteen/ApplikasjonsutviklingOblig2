@@ -2,34 +2,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@drawable/minekursbackground"
     tools:context="com.example.morten.oblig2.AddDelFragment">
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
+        <!-- TODO: Update blank fragment layout -->
 
 
         <Button
             android:id="@+id/delete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/slett" />
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:text="@string/delUserFromKurs"
+            android:layout_marginBottom="23dp"
+            android:layout_above="@+id/add"
+            android:layout_centerHorizontal="true" />
 
         <Button
             android:id="@+id/add"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/legg_til" />
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:text="@string/addToKurs"
+            android:layout_marginBottom="71dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/delete" />
 
         <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/vil_du_melde_deg_p_dette_kurset" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="46dp"
+            android:layout_marginTop="114dp"
+            android:text="@string/vil_du_melde_deg_p_dette_kurset"
+            android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse" />
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </FrameLayout>

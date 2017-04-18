@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Fornavn"
+        android:hint="@string/editUserfornavn"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="-58dp" />
 
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editUserFname"
         android:layout_marginTop="15dp"
-        android:hint="Etternavn"
+        android:hint="@string/editUserEtternavn"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="-58dp" />
 
@@ -34,7 +34,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/editUserLastName"
         android:layout_marginTop="15dp"
-        android:hint="Brukernavn" />
+        android:hint="@string/editUserbrukernavn" />
 
     <EditText
         android:id="@+id/editUserPassword"
@@ -44,7 +44,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:hint="Passord"
+        android:hint="@string/editUserpassord"
          />
 
     <EditText
@@ -55,7 +55,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:hint="Email" />
+        android:hint="@string/editUseremail" />
 
     <EditText
         android:id="@+id/editUserAge"
@@ -65,7 +65,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:hint="Alder"
+        android:hint="@string/editUserAlder"
         android:inputType="number" />
 
     <Button
@@ -73,7 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginTop="67dp"
-        android:text="Oppdater mine opplysninger"
+        android:text="@string/uppdateBtn"
         android:layout_below="@+id/editUserAge"
         android:layout_alignParentStart="true" />
     </RelativeLayout>

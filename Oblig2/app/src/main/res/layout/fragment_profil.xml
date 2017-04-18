@@ -14,7 +14,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:gravity="center_horizontal"
-        android:text="@string/min_profil" />
+        android:text="@string/min_profil"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"/>
 
 
     <LinearLayout
@@ -30,7 +31,8 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="40dp"
-            android:text="@string/navn" />
+            android:text="@string/navn"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse" />
 
         <TextView
             android:id="@+id/fname"
@@ -38,7 +40,8 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:layout_marginTop="40dp"
-            android:text="Morten" />
+            android:text="Morten"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse" />
 
         <TextView
 
@@ -47,14 +50,16 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:layout_marginTop="40dp"
-            android:text="@string/etternavn" />
+            android:text="@string/etternavn"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"/>
 
         <TextView
             android:id="@+id/ename"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="Olsen" />
+            android:text="Olsen"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"/>
 
 
     </LinearLayout>
@@ -70,7 +75,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="40dp"
-            android:text="@string/brukernavn" />
+            android:text="@string/brukernavn"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"/>
 
         <TextView
             android:id="@+id/username"
@@ -78,21 +84,25 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="40dp"
-            android:text="morteen" />
+            android:text="morteen"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"/>
 
         <TextView
             android:id="@+id/placeholderPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="40dp"
-            android:text="@string/passord" />
+            android:text="@string/passord"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"/>
 
         <TextView
             android:id="@+id/ePassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="#071362Morten" />
+            android:text="#071362Morten"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"/>
 
 
     </LinearLayout>
@@ -109,14 +119,16 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="40dp"
-            android:text="@string/email" />
+            android:text="@string/email"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"/>
 
         <TextView
             android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="mortenolsen4@gmail.com" />
+            android:text="mortenolsen4@gmail.com"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"/>
 
     </LinearLayout>
 
@@ -134,14 +146,16 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="40dp"
-        android:text="@string/alder"/>
+        android:text="@string/alder"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"/>
 
         <TextView
             android:id="@+id/alder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="44"/>
+            android:text="44"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"/>
 </LinearLayout>
 
 

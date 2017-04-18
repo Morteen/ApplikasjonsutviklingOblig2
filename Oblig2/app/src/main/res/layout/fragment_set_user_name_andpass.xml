@@ -1,0 +1,53 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.morten.oblig2.SetUserNameAndpass">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Husk brukernavn og passord"
+            android:layout_marginBottom="52dp"
+            android:layout_above="@+id/sharedEtextusernam"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:id="@+id/sharedEtextusernam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Brukernavn"
+            android:layout_alignBottom="@+id/sharedEtextPassW"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="72dp" />
+
+        <EditText
+            android:id="@+id/sharedEtextPassW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Passord"
+            android:layout_above="@+id/SharedPrefBtn"
+            android:layout_alignStart="@+id/sharedEtextusernam"
+            android:layout_marginBottom="38dp" />
+
+        <Button
+            android:id="@+id/SharedPrefBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lagre innstillinger"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="134dp" />
+    </RelativeLayout>
+
+</FrameLayout>

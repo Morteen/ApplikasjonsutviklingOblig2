@@ -1,5 +1,9 @@
 package com.example.morten.oblig2;
 
+/**
+ * Dette er et fragment som lar brukeren melde seg på eller av et valgt kurs
+ */
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -17,13 +21,13 @@ import android.widget.Toast;
 
 public class AddDelFragment extends Fragment {
 
-    Button delete, add;
-    int userNr, listNr, listPos;
-    Kurs kurs;
-    String addMethod = "addUserToKurs";
-    String delMethod = "delUserOnKurs";
-    String userNrstring, kursNrString;
-    boolean sjekk;
+    private Button delete, add;
+    private int userNr, listNr, listPos;
+    private Kurs kurs;
+    private String addMethod = "addUserToKurs";
+    private String delMethod = "delUserOnKurs";
+    private String userNrstring, kursNrString;
+    private boolean sjekk;
 
     public AddDelFragment() {
         // Required empty public constructor
@@ -54,10 +58,14 @@ public class AddDelFragment extends Fragment {
         kurs = VisKursFragment.allekursList.get(listPos);
         userNrstring = Integer.toString(userNr);
         kursNrString = Integer.toString(listNr);
-         sjekk=false;
-        for(Kurs k : MinSideActivity.minekursList){
-            if(k.getKursnavn()!= null && k.getKursnavn().contains(kurs.getKursnavn())){
-                sjekk=true;
+
+        /**
+         * Sjekker om det valgte kurset er i listen over kurs deltakeren er med på
+         */
+        sjekk = false;
+        for (Kurs k : MinSideActivity.minekursList) {
+            if (k.getKursnavn() != null && k.getKursnavn().contains(kurs.getKursnavn())) {
+                sjekk = true;
             }
 
         }
@@ -69,8 +77,8 @@ public class AddDelFragment extends Fragment {
 
 
                 if (!sjekk) {
+                    //Legger til kurset i minekurs listen og i databasen
                     MinSideActivity.minekursList.add(kurs);
-
                     new BackgroundTask(getActivity()).execute(addMethod, userNrstring, kursNrString);
 
 
@@ -89,10 +97,9 @@ public class AddDelFragment extends Fragment {
             public void onClick(View v) {
 
                 if (sjekk) {
-
+                    //Sletter kurset i minekurs listen og i databasen
                     new BackgroundTask(getActivity()).execute(delMethod, userNrstring, kursNrString);
-                     MinSideActivity.minekursList.remove(kurs);
-
+                    MinSideActivity.minekursList.remove(kurs);
 
 
                 } else {

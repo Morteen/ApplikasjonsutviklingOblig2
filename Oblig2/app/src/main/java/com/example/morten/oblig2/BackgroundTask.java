@@ -1,17 +1,17 @@
 package com.example.morten.oblig2;
+/**
+ * Jeg prøvde å lage en Asynk klasse som passet til flere oppgaver
+ */
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -19,8 +19,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-
-import static android.R.attr.data;
 
 
 /**
@@ -33,7 +31,7 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
     Context context;
     String method = "";
     String userData;
-     ArrayList<User> userList;
+    ArrayList<User> userList;
 
     public BackgroundTask(Context context) {
 
@@ -149,7 +147,7 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
-               // httpURLConnection.setDoInput(true);
+                // httpURLConnection.setDoInput(true);
                 OutputStream os = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
 
@@ -212,17 +210,15 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
                 bufferedWriter.close();
 
                 int status = httpURLConnection.getResponseCode();
-                Log.d("Reponse kode",Integer.toString(status));
-                if(status < 400) {
+                Log.d("Reponse kode", Integer.toString(status));
+                if (status < 400) {
 
-                    InputStream is   = httpURLConnection.getInputStream();
+                    InputStream is = httpURLConnection.getInputStream();
                     is.close();
-                }else{
-                    InputStream is= httpURLConnection.getErrorStream();
+                } else {
+                    InputStream is = httpURLConnection.getErrorStream();
 
                 }
-
-
 
 
                 return "Opplysningene er oppdater..";
@@ -255,7 +251,7 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
         } else if (method.equals("delUserOnKurs")) {
             Toast.makeText(this.context, result, Toast.LENGTH_SHORT).show();
         } else if (method.equals("update")) {
-            Log.d("Result i post Ex",result);
+            Log.d("Result i post Ex", result);
             Toast.makeText(this.context, result, Toast.LENGTH_SHORT).show();
         }
     }

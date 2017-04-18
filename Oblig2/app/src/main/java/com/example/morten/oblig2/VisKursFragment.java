@@ -1,23 +1,22 @@
 package com.example.morten.oblig2;
+/**
+ * Dette er et fragment som viser alle tilgjengelige kurs i databasen. Det er en onItemClickListener
+ * på listen over kurs slik at man kan velge et kurs og melde seg på eller av
+ */
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.app.Fragment;
-import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,15 +27,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import static java.lang.Integer.parseInt;
-
 
 public class VisKursFragment extends Fragment {
 
-    ListView kursListView;
-    String kursData;
+    private ListView kursListView;
+    private String kursData;
     static ArrayList<Kurs> allekursList;
-
 
 
     public VisKursFragment() {

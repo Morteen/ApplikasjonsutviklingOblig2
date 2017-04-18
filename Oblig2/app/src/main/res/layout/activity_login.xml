@@ -36,30 +36,41 @@
             android:ems="10"
             android:hint="Passord"
             android:inputType="textPassword"
+            android:layout_marginBottom="40dp"
             android:layout_above="@+id/btnLogin"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="40dp" />
+            android:layout_alignParentStart="true" />
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:layout_above="@+id/tvRegistrerHer"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="102dp" />
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:layout_above="@+id/tvRegistrerHer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp"
+        android:background="@drawable/logo"
+        android:text="Login"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse" />
 
     <TextView
         android:id="@+id/tvRegistrerHer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registrer her!"
-        android:textAlignment="center"
-        android:textAppearance="@android:style/TextAppearance.Material"
+        android:layout_marginBottom="25dp"
+        android:text="@string/registrer_her"
+        android:gravity="center_horizontal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="69dp" />
+        android:layout_alignParentStart="true" />
 
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
 
 

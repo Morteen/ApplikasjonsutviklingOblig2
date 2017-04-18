@@ -1,7 +1,14 @@
 package com.example.morten.oblig2;
 
+/**
+ * Dette er en vanlig login side som logger inn brukeren og sender denne videre
+ */
+
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -26,52 +33,71 @@ import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
     String userData;
-     static ArrayList<User> userList;
+    static ArrayList<User> userList;
     static User loginuser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
 
-        final EditText eUserName= (EditText)findViewById(R.id.etUsername);
-        final EditText ePassword= (EditText)findViewById(R.id.etPassword);
-        final Button btnLogin= (Button) findViewById(R.id.btnLogin);
-        final TextView reglink= (TextView)findViewById(R.id.tvRegistrerHer);
+        final EditText eUserName = (EditText) findViewById(R.id.etUsername);
+        final EditText ePassword = (EditText) findViewById(R.id.etPassword);
+        final Button btnLogin = (Button) findViewById(R.id.btnLogin);
+        final TextView reglink = (TextView) findViewById(R.id.tvRegistrerHer);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("userInfo", getApplicationContext().MODE_PRIVATE);
+        if(sharedPreferences !=null){
+
+        eUserName.setText(sharedPreferences.getString("username",""));
+        ePassword.setText(sharedPreferences.getString("password",""));
+        }
+
 
 
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String user_name= eUserName.getText().toString();
-                String user_pass= ePassword.getText().toString();
+                String user_name = eUserName.getText().toString();
+                String user_pass = ePassword.getText().toString();
 
-                new LoginActivity.JSONAsynkTask().execute(user_name,user_pass);
-                eUserName.setText("");
-                 ePassword.setText("");
+
+
+                if (isOnline()) {
+
+                    new LoginActivity.JSONAsynkTask().execute(user_name, user_pass);
+                    eUserName.setText("");
+                    ePassword.setText("");
+
+                } else {
+                    String message = getString(R.string.ConnectionErrorMessage);
+                    Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG).show();
+                }
 
             }
         });
 
 
-
-
-       //Åpner registrer viewet hvis brukeren ikke har bruker navn og passord
+        //Åpner registrer viewet hvis brukeren ikke har bruker navn og passord
         reglink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-
-                Intent registrerIntent = new Intent(LoginActivity.this,RegisterActivity.class);//RegisterActivity
+                Intent registrerIntent = new Intent(LoginActivity.this, RegisterActivity.class);//RegisterActivity
                 LoginActivity.this.startActivity(registrerIntent);
 
             }
         });
     }
 
-
+    /**
+     * En asynk klasse som sjekker om brukernavnet finnes i databasen
+     * Hvis det finnes blir brukeren sendt til 'Minside' activity, hvis ikke
+     * så blir brukeren sendt til registererings aktiviteten
+     */
 
 
     class JSONAsynkTask extends AsyncTask<String, Void, Boolean> {
@@ -109,7 +135,7 @@ public class LoginActivity extends AppCompatActivity {
 
             HttpURLConnection connection = null;
             try {
-                URL actorUrl = new URL("http://itfag.usn.no/~210144/api.php/Bruker?filter=Passord,eq,"+params[1]+"&filter=username,eq,"+params[0]+"&transform=1");
+                URL actorUrl = new URL("http://itfag.usn.no/~210144/api.php/Bruker?filter=Passord,eq," + params[1] + "&filter=username,eq," + params[0] + "&transform=1");
 
                 connection = (HttpURLConnection) actorUrl.openConnection();
                 connection.connect();
@@ -126,7 +152,6 @@ public class LoginActivity extends AppCompatActivity {
                 userData = sb.toString();
                 userList = User.lagUserListe(userData);
                 Log.d("connection", userData);
-
 
 
                 return true;
@@ -147,7 +172,7 @@ public class LoginActivity extends AppCompatActivity {
 
             } finally {
 
-                if( reader!=null){
+                if (reader != null) {
                     try {
                         reader.close();
                     } catch (IOException e) {
@@ -166,33 +191,30 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Boolean result) {
 
-            if(result){
+            if (result) {
 
-            progressDialog.cancel();
-
-
-                  if(userList.size()>0){
-                      loginuser = userList.get(0);
-                      Toast.makeText(getApplicationContext(), loginuser.getFornavn(), Toast.LENGTH_SHORT).show();
-                      MinSideActivity.returnToMinside(LoginActivity.this);
-                      finish();
-
-            }else if(userList.size()==0||userList==null){
+                progressDialog.cancel();
 
 
+                if (userList.size() > 0) {
+                    loginuser = userList.get(0);
+                    MinSideActivity.returnToMinside(LoginActivity.this);
+                    finish();
 
-                    Toast.makeText(LoginActivity.this,getString(R.string.UserLoginErrorMessage),Toast.LENGTH_SHORT).show();
+                } else if (userList.size() == 0 || userList == null) {
 
-                      Intent registrerIntent = new Intent(LoginActivity.this,RegisterActivity.class);//RegisterActivity
-                      LoginActivity.this.startActivity(registrerIntent);
+
+                    Toast.makeText(LoginActivity.this, getString(R.string.UserLoginErrorMessage), Toast.LENGTH_SHORT).show();
+
+                    Intent registrerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                    LoginActivity.this.startActivity(registrerIntent);
 
                 }
 
 
+            } else {
 
-            } else  {
-
-                Toast.makeText(getApplicationContext(),getString(R.string.NoDataLoginErrorMessage), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.NoDataLoginErrorMessage), Toast.LENGTH_SHORT).show();
 
                 progressDialog.cancel();
 
@@ -202,12 +224,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
+    /**
+     * Sjekker om  det er nettverkstilgang
+     *
+     * @return true or  false
+     */
+    protected boolean isOnline() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(LoginActivity.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        return (networkInfo != null && networkInfo.isConnected());
+    }
 
 
 }

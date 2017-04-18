@@ -1,4 +1,7 @@
 package com.example.morten.oblig2;
+/**
+ * Dette er et fragment som vise oplysninger om brukeren
+ */
 
 
 import android.os.Bundle;
@@ -12,7 +15,7 @@ import android.widget.TextView;
 
 public class ProfilFragment extends Fragment {
 
-TextView fname,ename,username,email,passw,alder;
+private TextView fname,ename,username,email,passw,alder;
 
     public ProfilFragment() {
         // Required empty public constructor

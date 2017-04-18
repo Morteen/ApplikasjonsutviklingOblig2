@@ -1,4 +1,7 @@
 package com.example.morten.oblig2;
+/**
+ * Dette er et fragment som lar brukeren oppdatere sine opplysninger
+ */
 
 import android.content.Context;
 import android.net.Uri;
@@ -14,11 +17,9 @@ import android.widget.Toast;
 
 public class EditUserFragment extends Fragment {
 
-    /**
-     * Fragmentet viser brukerinformasjon og lar brukeren redigere dem
-     */
-    EditText userFname, userLname, userUsername, userPassword, userEmail, userAge;
-    Button updateBtn;
+
+    private EditText userFname, userLname, userUsername, userPassword, userEmail, userAge;
+    private Button updateBtn;
     private String method = "update";
     private String userNr;
     private User user;
